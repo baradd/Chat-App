@@ -1,0 +1,96 @@
+<!--
+Author: Colorlib
+Author URL: https://colorlib.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="application/x-javascript">
+    addEventListener("load", function() {
+      setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+      window.scrollTo(0, 1);
+    }
+  </script>
+  <!-- Custom Theme files -->
+  <link href="./css/register.css" rel="stylesheet" type="text/css" media="all" />
+  <!-- //Custom Theme files -->
+  <!-- web font -->
+  <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+  <!-- //web font -->
+</head>
+
+<body>
+  <!-- main -->
+  <div class="main-w3layouts wrapper">
+    <h1>Register and enjoy chatting</h1>
+    <div class="main-agileinfo">
+      <div class="agileits-top">
+        <form action="/register" method="post" id="register-form" name="register-form" enctype="multipart/form-data">
+          <input class="text" type="text" placeholder="Username" required="true" id="username" name="username">
+          <input class="text email form-control" id="formFile" type="file" name="image" placeholder="Upload your image" required=" true">
+          <input class="text" type="password" placeholder="Password" required="true" id="password" name="password">
+          <input class="text w3lpass" type="password" name="passwordRepeat" placeholder="Confirm Password" required="">
+          <div class="wthree-text">
+            <label class="anim">
+              <input type="checkbox" class="checkbox" required="true">
+              <span>I Agree To The Terms & Conditions</span>
+            </label>
+            <div class="clear"> </div>
+          </div>
+          <input type="submit" value="SIGNUP">
+        </form>
+        <p>Don't have an Account? <a href="#"> Login Now!</a></p>
+      </div>
+    </div>
+    <!-- copyright -->
+    <div class="colorlibcopy-agile">
+      <p>Designed by</p>
+    </div>
+    <!-- //copyright -->
+    <ul class="colorlib-bubbles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <!-- //main -->
+
+  <script>
+    // document.querySelector("#register-form").addEventListener('submit', (e) => {
+    //   e.preventDefault()
+    //   let username = document.querySelector("#username").value,
+    //     password = document.querySelector("#password").value;
+    //   const xhttp = new XMLHttpRequest()
+    //   xhttp.onload = function() {
+
+    //   }
+    //   console.log(username);
+    //   console.log(password);
+    //   xhttp.open("POST", "/register");
+    //   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    //   xhttp.send(JSON.stringify({
+    //     username,
+    //     password
+    //   }))
+
+    // })
+  </script>
+</body>
+
+</html>
