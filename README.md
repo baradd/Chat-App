@@ -20,6 +20,7 @@ Open a terminal in folder of project and type node app
 ```bash 
 node app
 ```
+You must have MongoDB on your system
 
 ## Technologies 
 - Node.js
