@@ -356,7 +356,7 @@ document.querySelector('#create-group-form').addEventListener('submit', (e) => {
   e.preventDefault();
   let groupName = document.querySelector('#group-name').value,
     groupBio = document.querySelector('#group-bio').value,
-    groupImage = document.querySelector('#group-image').files[0];
+    groupImage = document.querySelector('#group-imagee').files[0];
 
   if (groupName) {
     socket.emit('upload-group-image', groupImage, (status) => {
@@ -444,6 +444,7 @@ socket.on('joined-group', (data) => {
   document
     .querySelector('#group-image')
     .setAttribute('src', `./images/groups/${group.image}`);
+  console.log(document.querySelector('img #group-image'));
   if (groupMessages.length > 0) {
     let user = JSON.parse(localStorage.getItem('user'));
     groupMessages.forEach((groupMessage) => {
