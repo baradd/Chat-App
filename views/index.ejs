@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Login</title>
+</head>
+
+<body>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+
+      <!-- Icon -->
+      <!-- <div class="fadeIn first">
+        <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+      </div> -->
+
+      <!-- Login Form -->
+      <form id="login-form">
+        <input type="text" id="username" class="fadeIn second" name="username" placeholder="username" required>
+        <input type="password" id="password" class="fadeIn second" name="password" placeholder="password" required>
+        <input type="submit" class="fadeIn fourth" value="Log In">
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a><br>
+        <a class="underlineHover" href="/register">Register</a>
+      </div>
+      <!-- Error Alert -->
+      <div class="alert alert-danger alert-dismissible d-flex align-items-center fade show" style="display: none !important;" id="login-message">
+        <i class="bi-exclamation-octagon-fill"></i>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="alert"></button> -->
+      </div>
+    </div>
+  </div>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+<script>
+  document.querySelector("#login-form").addEventListener("submit", (e) => {
+    e.preventDefault()
+    let username = document.querySelector('#username').value,
+      password = document.querySelector('#password').value
+
+    let xhttp = new XMLHttpRequest()
+    xhttp.onload = function() {
+      console.log(this.status);
+      if (this.status === 302) {
+        let response = JSON.parse(this.response)
+        let token = response.data.token;
+        let user = JSON.stringify(response.data.user)
+        localStorage.setItem('token', token);
+        localStorage.setItem("user", user)
+        window.location.replace("/chatroom")
+      } else if (this.status === 404) {
+        document.querySelector('#login-message').style.display = "block"
+        document.querySelector('#login-message').innerHTML += `<strong class="mx-2">Error!</strong> You haven't registered yet`
+      } else if (this.status === 401) {
+        document.querySelector('#login-message').style.display = "block"
+        document.querySelector('#login-message').innerHTML += `<strong class="mx-2">Error!</strong> Invalid Username or Password`
+      }
+    }
+
+    xhttp.open("POST", '/login')
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({
+      username,
+      password
+    }))
+  })
+</script>
+
+</html>
